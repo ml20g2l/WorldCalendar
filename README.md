@@ -1,18 +1,18 @@
-# World Calendar — Multi‑country Holidays (KR · UK · US · CA)
+# World Calendar — Multi‑country Holidays (KR · UK · US · CA · AU · NZ)
 
 A lightweight React + Tailwind MVP that shows multiple countries’ public holidays on a single calendar.
 
-- **Countries**: Korea (KR), United Kingdom (UK), United States (US), Canada (CA)
+- **Countries**: Korea (KR), United Kingdom (UK), United States (US), Canada (CA), **Australia (AU)**, **New Zealand (NZ)**
 - **UK is unified** (England & Wales base). Scotland/Northern Ireland only holidays are shown with **parentheses**:
   - e.g., `St Andrew’s Day (Scotland)`, `St Patrick’s Day (Northern Ireland)`
-- **Offline rules** for UK/US/CA (no API needed).  
+- **Offline rules** for **UK/US/CA/AU/NZ** (no API needed).  
   **KR** uses an API; if the API year is empty, the calendar renders with no KR events for that year. If the request fails, a banner appears with **Retry**, and other countries still render normally.
 
 ---
 
 ## Features
 
-- Onboarding: scrollable multi‑select of countries (KR, UK, US, CA).
+- Onboarding: scrollable multi‑select of countries (KR, UK, US, CA, AU, NZ).
 - Month navigation, “Today” button; resilient date handling.
 - Calendar grid with **country color dots** and merged event titles across countries (e.g., Christmas appears once with country codes).
 - Side panel with per‑day merged events and legend.
@@ -50,9 +50,9 @@ Render the component in your `App.jsx` (or page) and ensure Tailwind is loaded.
 
 ---
 
-## Country Logic
+## Country Logic (offline unless noted)
 
-### United States (US) — Offline
+### United States (US)
 - New Year’s Day (observed)
 - Martin Luther King Jr. Day (3rd Monday in Jan)
 - Presidents’ Day (3rd Monday in Feb)
@@ -65,12 +65,12 @@ Render the component in your `App.jsx` (or page) and ensure Tailwind is loaded.
 - Thanksgiving (4th Thursday in Nov)
 - Christmas Day (observed)
 
-### United Kingdom (UK) — Unified, Offline
-- Base (England & Wales): Good Friday, *Easter Monday*, Early May bank holiday (1st Mon in May), Spring bank holiday (last Mon in May), Summer bank holiday (last Mon in Aug), Christmas, Boxing Day, New Year’s Day (all with UK “Mondayisation” rules).
-- **Scotland only** (appended label): `2 January (Scotland)`, `Summer bank holiday (Scotland)` (1st Mon in Aug), `St Andrew’s Day (Scotland)` (Nov 30, observed rules).
-- **Northern Ireland only** (appended label): `St Patrick’s Day (Northern Ireland)` (Mar 17, observed), `Battle of the Boyne (Northern Ireland)` (Jul 12, observed).
+### United Kingdom (UK) — **Unified**
+- Base (England & Wales): Good Friday, *Easter Monday*, Early May bank holiday (1st Mon in May), Spring bank holiday (last Mon in May), Summer bank holiday (last Mon in Aug), Christmas, Boxing Day, New Year’s Day (UK “Mondayisation”).  
+- **Scotland only** (appended): `2 January (Scotland)`, `Summer bank holiday (Scotland)` (1st Mon in Aug), `St Andrew’s Day (Scotland)` (Nov 30, observed).  
+- **Northern Ireland only** (appended): `St Patrick’s Day (Northern Ireland)` (Mar 17, observed), `Battle of the Boyne (Northern Ireland)` (Jul 12, observed).
 
-### Canada (CA) — Offline
+### Canada (CA)
 - New Year’s Day (observed)
 - Good Friday
 - **Victoria Day** (Monday before May 25)
@@ -81,11 +81,30 @@ Render the component in your `App.jsx` (or page) and ensure Tailwind is loaded.
 - Remembrance Day (observed)
 - Christmas Day (observed), Boxing Day (observed)
 
-> “Observed” means weekend dates shift to the nearest weekday according to each country’s rule set.
+### Australia (AU)
+- New Year’s Day (observed)
+- **Australia Day** (Jan 26, observed to Monday if weekend — *state variations exist*)
+- Good Friday
+- **Easter Monday**
+- **ANZAC Day** (Apr 25, observed to Monday if weekend — *some states differ; simplified here*)
+- **King’s Birthday** (2nd Monday in June — *most states*)
+- Christmas Day (observed), Boxing Day (observed)
 
-### Korea (KR) — API
+### New Zealand (NZ)
+- New Year’s Day **and** Day after New Year’s (both **mondayised**; if they collide due to mondayisation, the second shifts again)
+- **Waitangi Day** (Feb 6, mondayised)
+- Good Friday, **Easter Monday**
+- **ANZAC Day** (Apr 25, mondayised)
+- **King’s Birthday** (1st Monday in June)
+- **Labour Day** (4th Monday in October)
+- Christmas Day, Boxing Day (pair **mondayisation** handled)
+
+> “Observed/Mondayised” means weekend dates shift to the nearest weekday according to a country’s rule set.  
+> *State/provincial differences* (e.g., AU state holidays, CA provincial days, NZ Matariki) are not included yet.
+
+### Korea (KR) — **API**
 KR uses a backend endpoint returning a map of `YYYY-MM-DD` → array of `{ name_local, name_intl }`.  
-If the API returns **no data** for a year, KR simply has no events for that year (calendar still renders). Failures show a banner with a **Retry** button.
+If the API returns **no data** for a year, KR has no events for that year (calendar still renders). Failures show a banner with **Retry**.
 
 **Endpoint shape**
 ```
@@ -120,8 +139,11 @@ const COUNTRY_META = {
   UK: { label: "United Kingdom", color: "bg-rose-500" },
   US: { label: "United States", color: "bg-amber-500" },
   CA: { label: "Canada", color: "bg-emerald-500" },
+  AU: { label: "Australia", color: "bg-blue-600" },
+  NZ: { label: "New Zealand", color: "bg-black" },
 };
 ```
+> Tailwind color classes can be adjusted to suit your palette.
 
 ---
 
@@ -134,12 +156,12 @@ A lightweight runtime test suite logs results to the browser console on first mo
 <script>window.__RUN_CAL_TESTS__ = false;</script>
 ```
 
-The tests cover:
-- Date grid building
-- Safe date utilities
+Covers:
+- Date grid building & safe date utilities
 - API base URL builder
 - UK regional rules (Easter Monday difference, NI extras)
 - CA rules (Canada Day present, Victoria Day Monday-before-25th, Thanksgiving second Monday in October, Truth & Reconciliation since 2021)
+- **AU/NZ rules**: ANZAC Mondayisation (AU 2021 case), NZ New Year mondayisation pair, NZ Labour Day (4th Mon of Oct), AU King’s Birthday (2nd Mon of June in most states)
 
 ---
 
@@ -147,11 +169,19 @@ The tests cover:
 
 - KR lunar (음력) aligned holidays still require backend logic.
 - Localized labels per country/event can be expanded (currently English in offline rules).
-- Additional regions (e.g., UK: separate England label, Canada provinces like Family Day) can be added with similar rule helpers.
+- **Sub‑national variations** not yet modeled (AU states, CA provinces, NZ Matariki, UK council/local variations).
 - Accessibility: add keyboard navigation and aria labels for full a11y.
 - Persist selected countries to localStorage.
+- Time zones / locale formatting: consider user‑selected locales beyond `navigator.language`.
+
+---
+
+## Changelog
+
+- **v0.2**: Added **Australia (AU)** and **New Zealand (NZ)** offline holiday rules; fixed `DevTests` syntax; added AU/NZ tests; improved error handling.- **v0.1**: Initial MVP with KR (API), UK (unified), US, CA offline rules; error banner + Retry; onboarding multi‑select.
 
 ---
 
 ## License
 For internal MVP/demo use. Add your preferred license before distribution.
+
