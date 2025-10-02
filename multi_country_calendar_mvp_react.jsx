@@ -8,6 +8,7 @@ const COUNTRY_META = {
   CA: { label: "Canada", labelLocal: "Canada", color: "bg-emerald-500" },
   AU: { label: "Australia", labelLocal: "Australia", color: "bg-blue-600" },
   NZ: { label: "New Zealand", labelLocal: "New Zealand", color: "bg-black" },
+  IE: { label: "Ireland", labelLocal: "Ireland", color: "bg-green-600" },
 };
 
 const WEEK_LABELS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -128,6 +129,11 @@ function observedAU(year, monthIdx0, day) {
 }
 
 function observedNZ(year, monthIdx0, day) {
+  return observedUK(year, monthIdx0, day);
+}
+
+function observedIE(year, monthIdx0, day) {
+  // Ireland uses Mondayisation similar to UK (Sat/Sun -> Monday)
   return observedUK(year, monthIdx0, day);
 }
 
@@ -274,6 +280,29 @@ function makeNewZealandHolidays(year) {
   return map;
 }
 
+function makeIrelandHolidays(year) {
+  const map = {};
+  const easter = easterSunday(year);
+  addHoliday(map, observedIE(year, 0, 1), "New Year's Day (observed)", "New Year's Day", "IE");
+  if (year >= 2023) {
+    const feb1 = new Date(year, 1, 1);
+    const stBrigid = feb1.getDay() === 5 /* Friday */ ? feb1 : nthWeekdayOfMonth(year, 1, 1, 1);
+    addHoliday(map, stBrigid, "St Brigid's Day", "St Brigid's Day", "IE");
+  }
+  addHoliday(map, observedIE(year, 2, 17), "St Patrick's Day (observed)", "St Patrick's Day", "IE");
+  addHoliday(map, addDays(easter, 1), "Easter Monday", "Easter Monday", "IE");
+  addHoliday(map, nthWeekdayOfMonth(year, 4, 1, 1), "May Day", "May Day", "IE");
+  addHoliday(map, nthWeekdayOfMonth(year, 5, 1, 1), "June Holiday", "June Holiday", "IE");
+  addHoliday(map, nthWeekdayOfMonth(year, 7, 1, 1), "August Holiday", "August Holiday", "IE");
+  addHoliday(map, lastWeekdayOfMonth(year, 9, 1), "October Bank Holiday", "October Bank Holiday", "IE");
+  const xmasObserved = observedIE(year, 11, 25);
+  let stephObserved = observedIE(year, 11, 26);
+  if (toKey(xmasObserved) === toKey(stephObserved)) stephObserved = addDays(stephObserved, 1);
+  addHoliday(map, xmasObserved, "Christmas Day", "Christmas", "IE");
+  addHoliday(map, stephObserved, "St Stephen's Day", "St Stephen's Day", "IE");
+  return map;
+}
+
 export default function MultiCountryCalendarApp() {
   const initialNow = useRef(new Date()).current;
   const [viewDate, setViewDate] = useState(new Date(initialNow.getFullYear(), initialNow.getMonth(), 1));
@@ -332,6 +361,10 @@ export default function MultiCountryCalendarApp() {
       }
       if (code === "NZ") {
         results[code] = makeNewZealandHolidays(year);
+        continue;
+      }
+      if (code === "IE") {
+        results[code] = makeIrelandHolidays(year);
         continue;
       }
       try {
@@ -733,6 +766,36 @@ function DevTests() {
       const k1 = toKey(observedCA(y1, 8, 30));
       const k0 = toKey(observedCA(y0, 8, 30));
       return Array.isArray(ca1[k1]) && !Array.isArray(ca0[k0]);
+    });
+
+    push("IE: Easter Monday present; Good Friday absent", () => {
+      const y = 2026;
+      const ie = makeIrelandHolidays(y);
+      const easter = easterSunday(y);
+      const em = toKey(addDays(easter, 1));
+      const gf = toKey(addDays(easter, -2));
+      return Array.isArray(ie[em]) && !Array.isArray(ie[gf]);
+    });
+
+    push("IE: St Brigid's Day first Monday of Feb (2025)", () => {
+      const y = 2025;
+      const ie = makeIrelandHolidays(y);
+      const sbd = nthWeekdayOfMonth(y, 1, 1, 1);
+      return Array.isArray(ie[toKey(sbd)]) && sbd.getDay() === 1 && sbd.getMonth() === 1;
+    });
+
+    push("IE: St Patrick's Day mondayised when Sunday (2024)", () => {
+      const y = 2024; // Mar 17, 2024 was Sunday -> Monday observed
+      const ie = makeIrelandHolidays(y);
+      const obs = observedIE(y, 2, 17);
+      return Array.isArray(ie[toKey(obs)]) && obs.getDay() === 1;
+    });
+
+    push("IE: October bank holiday last Monday of Oct", () => {
+      const y = 2026;
+      const ie = makeIrelandHolidays(y);
+      const lastMon = lastWeekdayOfMonth(y, 9, 1);
+      return Array.isArray(ie[toKey(lastMon)]) && lastMon.getDay() === 1 && lastMon.getMonth() === 9;
     });
 
     const results = tests.map((t) => {
