@@ -1,18 +1,18 @@
-# World Calendar — Multi‑country Holidays (KR · UK · US · CA · AU · NZ)
+# World Calendar — Multi‑country Holidays
 
 A lightweight React + Tailwind MVP that shows multiple countries’ public holidays on a single calendar.
 
-- **Countries**: Korea (KR), United Kingdom (UK), United States (US), Canada (CA), **Australia (AU)**, **New Zealand (NZ)**
+- **Countries**: Korea (KR), United Kingdom (UK), United States (US), Canada (CA), **Australia (AU)**, **New Zealand (NZ)**, **Ireland (IE)**
 - **UK is unified** (England & Wales base). Scotland/Northern Ireland only holidays are shown with **parentheses**:
   - e.g., `St Andrew’s Day (Scotland)`, `St Patrick’s Day (Northern Ireland)`
-- **Offline rules** for **UK/US/CA/AU/NZ** (no API needed).  
+- **Offline rules** for **UK/US/CA/AU/NZ/IE** (no API needed).  
   **KR** uses an API; if the API year is empty, the calendar renders with no KR events for that year. If the request fails, a banner appears with **Retry**, and other countries still render normally.
 
 ---
 
 ## Features
 
-- Onboarding: scrollable multi‑select of countries (KR, UK, US, CA, AU, NZ).
+- Onboarding: scrollable multi‑select of countries (KR, UK, US, CA, AU, NZ, IE).
 - Month navigation, “Today” button; resilient date handling.
 - Calendar grid with **country color dots** and merged event titles across countries (e.g., Christmas appears once with country codes).
 - Side panel with per‑day merged events and legend.
@@ -99,8 +99,19 @@ Render the component in your `App.jsx` (or page) and ensure Tailwind is loaded.
 - **Labour Day** (4th Monday in October)
 - Christmas Day, Boxing Day (pair **mondayisation** handled)
 
+### Ireland (IE)
+- **New Year’s Day (observed)**
+- **St Brigid’s Day** — from **2023**: first **Monday** in February; **if Feb 1 is Friday, then Feb 1**
+- **St Patrick’s Day (observed)** — Mar 17, mondayised
+- **Easter Monday** (Good Friday is **not** a public holiday)
+- **May Day** (1st Monday in May)
+- **June Holiday** (1st Monday in June)
+- **August Holiday** (1st Monday in August)
+- **October Bank Holiday** (last Monday in October)
+- **Christmas Day** and **St Stephen’s Day** (pair mondayisation handled)
+
 > “Observed/Mondayised” means weekend dates shift to the nearest weekday according to a country’s rule set.  
-> *State/provincial differences* (e.g., AU state holidays, CA provincial days, NZ Matariki) are not included yet.
+> *Sub‑national differences* (AU states, CA provinces, NZ Matariki, UK council/local) are not modeled yet.
 
 ### Korea (KR) — **API**
 KR uses a backend endpoint returning a map of `YYYY-MM-DD` → array of `{ name_local, name_intl }`.  
@@ -141,6 +152,7 @@ const COUNTRY_META = {
   CA: { label: "Canada", color: "bg-emerald-500" },
   AU: { label: "Australia", color: "bg-blue-600" },
   NZ: { label: "New Zealand", color: "bg-black" },
+  IE: { label: "Ireland", color: "bg-green-600" },
 };
 ```
 > Tailwind color classes can be adjusted to suit your palette.
@@ -162,6 +174,7 @@ Covers:
 - UK regional rules (Easter Monday difference, NI extras)
 - CA rules (Canada Day present, Victoria Day Monday-before-25th, Thanksgiving second Monday in October, Truth & Reconciliation since 2021)
 - **AU/NZ rules**: ANZAC Mondayisation (AU 2021 case), NZ New Year mondayisation pair, NZ Labour Day (4th Mon of Oct), AU King’s Birthday (2nd Mon of June in most states)
+- **IE rules**: Easter Monday (Good Friday excluded), St Brigid’s Day (since 2023), St Patrick’s Day mondayisation, October Bank Holiday (last Monday)
 
 ---
 
@@ -178,10 +191,11 @@ Covers:
 
 ## Changelog
 
-- **v0.2**: Added **Australia (AU)** and **New Zealand (NZ)** offline holiday rules; fixed `DevTests` syntax; added AU/NZ tests; improved error handling.- **v0.1**: Initial MVP with KR (API), UK (unified), US, CA offline rules; error banner + Retry; onboarding multi‑select.
+- **v0.3**: Added **Ireland (IE)** offline holiday rules; fixed duplicate function definition error; added IE tests.
+- **v0.2**: Added **Australia (AU)** and **New Zealand (NZ)** offline holiday rules; fixed `DevTests` syntax; added AU/NZ tests; improved error handling.
+- **v0.1**: Initial MVP with KR (API), UK (unified), US, CA offline rules; error banner + Retry; onboarding multi‑select.
 
 ---
 
 ## License
 For internal MVP/demo use. Add your preferred license before distribution.
-
