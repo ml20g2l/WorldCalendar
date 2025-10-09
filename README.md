@@ -160,13 +160,13 @@ Hovering over a date shows tooltips with translated names such as “元日 – 
 - Added France, Ireland, and Korea (API‑based lunar support).
 - Introduced Tailwind styling and tooltip components.
 
-### v0.3 (August 2025)
+### v0.3 (September 2025)
 - Added Canada, Australia, and New Zealand.
 
-### v0.2 (July 2025)
+### v0.2 (September 2025)
 - Added United States and United Kingdom.
 
-### v0.1 (June 2025)
+### v0.1 (September 2025)
 - Initial prototype with basic single‑country holiday view.
 
 ---
