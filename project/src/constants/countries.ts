@@ -40,6 +40,11 @@ export const COUNTRY_META: Record<CountryCode, CountryMeta> = {
   VN: { label: 'Vietnam', labelLocal: 'Việt Nam', color: 'bg-red-600', flag: '🇻🇳' },
   BH: { label: 'Bahrain', labelLocal: 'البحرين', color: 'bg-red-700', flag: '🇧🇭' },
   MY: { label: 'Malaysia', labelLocal: 'Malaysia', color: 'bg-yellow-500', flag: '🇲🇾' },
+  NG: { label: 'Nigeria', labelLocal: 'Naíjíríà', color: 'bg-green-700', flag: '🇳🇬' },
+  BD: { label: 'Bangladesh', labelLocal: 'বাংলাদেশ', color: 'bg-green-500', flag: '🇧🇩' },
+  ET: { label: 'Ethiopia', labelLocal: 'ኢትዮጵያ', color: 'bg-yellow-600', flag: '🇪🇹' },
+  KE: { label: 'Kenya', labelLocal: 'Kenya', color: 'bg-red-600', flag: '🇰🇪' },
+  TR: { label: 'Turkey', labelLocal: 'Türkiye', color: 'bg-red-700', flag: '🇹🇷' },
 };
 
 export const FR_REGION_META = [

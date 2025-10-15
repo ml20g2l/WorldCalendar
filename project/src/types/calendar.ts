@@ -28,7 +28,7 @@ export interface CalendarEvent {
   color?: string;
 }
 
-export type CountryCode = 'KR' | 'UK' | 'US' | 'CA' | 'AU' | 'NZ' | 'IE' | 'FR' | 'DE' | 'JP' | 'CN' | 'BR' | 'IN' | 'GR' | 'ES' | 'PT' | 'LU' | 'DK' | 'FI' | 'HU' | 'EE' | 'IS' | 'SE' | 'QA' | 'LT' | 'RO' | 'RU' | 'UZ' | 'ID' | 'KH' | 'PK' | 'GE' | 'AR' | 'MX' | 'TH' | 'PH' | 'VN' | 'BH' | 'MY';
+export type CountryCode = 'KR' | 'UK' | 'US' | 'CA' | 'AU' | 'NZ' | 'IE' | 'FR' | 'DE' | 'JP' | 'CN' | 'BR' | 'IN' | 'GR' | 'ES' | 'PT' | 'LU' | 'DK' | 'FI' | 'HU' | 'EE' | 'IS' | 'SE' | 'QA' | 'LT' | 'RO' | 'RU' | 'UZ' | 'ID' | 'KH' | 'PK' | 'GE' | 'AR' | 'MX' | 'TH' | 'PH' | 'VN' | 'BH' | 'MY' | 'NG' | 'BD' | 'ET' | 'KE' | 'TR';
 
 export type LanguageDisplay = 'native' | 'app';
 

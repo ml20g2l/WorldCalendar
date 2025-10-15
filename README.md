@@ -29,7 +29,7 @@ Most holiday data is calculated offline using deterministic date logic, while lu
 
 ## Supported Countries
 
-The calendar now supports **39 countries** across all continents:
+The calendar now supports **44 countries** across all continents:
 
 | Continent | Country | Code | Notes |
 |------------|----------|------|-------|
@@ -65,6 +65,11 @@ The calendar now supports **39 countries** across all continents:
 | Asia | Vietnam | `VN` | Reunification Day and National Day. |
 | Asia | Bahrain | `BH` | National Day. |
 | Asia | Malaysia | `MY` | Malaysia Day and Federal Territory Day. |
+| **Africa** | Nigeria | `NG` | Democracy Day and Independence Day. |
+| Africa | Ethiopia | `ET` | Orthodox Christmas and Ethiopian New Year. |
+| Africa | Kenya | `KE` | Madaraka Day and Mashujaa Day. |
+| **Middle East** | Turkey | `TR` | Republic Day and Democracy and National Unity Day. |
+| **South Asia** | Bangladesh | `BD` | International Mother Language Day and Victory Day. |
 | **Americas** | United States | `US` | Federal holidays including Thanksgiving. |
 | Americas | Canada | `CA` | Federal and provincial holidays. |
 | Americas | Brazil | `BR` | Carnival and regional celebrations. |
@@ -248,6 +253,14 @@ Hovering over a date shows tooltips with translated names such as "元日 – Ne
 ---
 
 ## Changelog
+
+### v0.8 (October 2025)
+- Added **5 new countries with high Android market share**: Nigeria, Bangladesh, Ethiopia, Kenya, and Turkey.
+- Total countries supported: **44**.
+- Enhanced localization with native language labels (Bengali, Amharic, Turkish).
+- Added regional African holidays and Ethiopian Orthodox calendar support.
+- Completed holiday implementations for all previously listed countries (GR, ES, PT, LU, DK, FI, HU, EE, IS, SE).
+- Optimized for Android-dominant markets across Africa, South Asia, and Middle East.
 
 ### v0.7 (October 2025)
 - Integrated **Capacitor** for native Android app support

@@ -517,6 +517,264 @@ export function makeMYHolidays(year: number): HolidayMap {
   return map;
 }
 
+export function makeGRHolidays(year: number): HolidayMap {
+  const map: HolidayMap = {};
+  const easter = easterSunday(year);
+  const orthodoxEaster = addDays(easter, 7);
+
+  addHoliday(map, new Date(year, 0, 1), "Πρωτοχρονιά", "New Year's Day", "GR");
+  addHoliday(map, new Date(year, 0, 6), "Θεοφάνεια", "Epiphany", "GR");
+  addHoliday(map, new Date(year, 2, 25), "Εικοστή Πέμπτη Μαρτίου", "Independence Day", "GR");
+  addHoliday(map, addDays(orthodoxEaster, -48), "Καθαρά Δευτέρα", "Clean Monday", "GR");
+  addHoliday(map, addDays(orthodoxEaster, -2), "Μεγάλη Παρασκευή", "Good Friday", "GR");
+  addHoliday(map, addDays(orthodoxEaster, 0), "Πάσχα", "Easter Sunday", "GR");
+  addHoliday(map, addDays(orthodoxEaster, 1), "Δευτέρα του Πάσχα", "Easter Monday", "GR");
+  addHoliday(map, new Date(year, 4, 1), "Εργατική Πρωτομαγιά", "Labour Day", "GR");
+  addHoliday(map, addDays(orthodoxEaster, 50), "Αγίου Πνεύματος", "Whit Monday", "GR");
+  addHoliday(map, new Date(year, 7, 15), "Κοίμηση της Θεοτόκου", "Assumption", "GR");
+  addHoliday(map, new Date(year, 9, 28), "Ημέρα του Όχι", "Ochi Day", "GR");
+  addHoliday(map, new Date(year, 11, 25), "Χριστούγεννα", "Christmas", "GR");
+  addHoliday(map, new Date(year, 11, 26), "Σύναξη Θεοτόκου", "Synaxis of the Mother of God", "GR");
+  return map;
+}
+
+export function makeESHolidays(year: number): HolidayMap {
+  const map: HolidayMap = {};
+  const easter = easterSunday(year);
+  addHoliday(map, new Date(year, 0, 1), "Año Nuevo", "New Year's Day", "ES");
+  addHoliday(map, new Date(year, 0, 6), "Epifanía del Señor", "Epiphany", "ES");
+  addHoliday(map, addDays(easter, -2), "Viernes Santo", "Good Friday", "ES");
+  addHoliday(map, new Date(year, 4, 1), "Fiesta del Trabajo", "Labour Day", "ES");
+  addHoliday(map, new Date(year, 7, 15), "Asunción de la Virgen", "Assumption", "ES");
+  addHoliday(map, new Date(year, 9, 12), "Fiesta Nacional de España", "National Day", "ES");
+  addHoliday(map, new Date(year, 10, 1), "Día de Todos los Santos", "All Saints' Day", "ES");
+  addHoliday(map, new Date(year, 11, 6), "Día de la Constitución", "Constitution Day", "ES");
+  addHoliday(map, new Date(year, 11, 8), "Inmaculada Concepción", "Immaculate Conception", "ES");
+  addHoliday(map, new Date(year, 11, 25), "Navidad", "Christmas", "ES");
+  return map;
+}
+
+export function makePTHolidays(year: number): HolidayMap {
+  const map: HolidayMap = {};
+  const easter = easterSunday(year);
+  addHoliday(map, new Date(year, 0, 1), "Ano Novo", "New Year's Day", "PT");
+  addHoliday(map, addDays(easter, -47), "Carnaval", "Carnival", "PT");
+  addHoliday(map, addDays(easter, -2), "Sexta-feira Santa", "Good Friday", "PT");
+  addHoliday(map, addDays(easter, 0), "Páscoa", "Easter Sunday", "PT");
+  addHoliday(map, new Date(year, 3, 25), "Dia da Liberdade", "Freedom Day", "PT");
+  addHoliday(map, new Date(year, 4, 1), "Dia do Trabalhador", "Labour Day", "PT");
+  addHoliday(map, addDays(easter, 60), "Corpo de Deus", "Corpus Christi", "PT");
+  addHoliday(map, new Date(year, 5, 10), "Dia de Portugal", "Portugal Day", "PT");
+  addHoliday(map, new Date(year, 7, 15), "Assunção de Nossa Senhora", "Assumption", "PT");
+  addHoliday(map, new Date(year, 9, 5), "Implantação da República", "Republic Day", "PT");
+  addHoliday(map, new Date(year, 10, 1), "Dia de Todos os Santos", "All Saints' Day", "PT");
+  addHoliday(map, new Date(year, 11, 1), "Restauração da Independência", "Restoration of Independence", "PT");
+  addHoliday(map, new Date(year, 11, 8), "Imaculada Conceição", "Immaculate Conception", "PT");
+  addHoliday(map, new Date(year, 11, 25), "Natal", "Christmas", "PT");
+  return map;
+}
+
+export function makeLUHolidays(year: number): HolidayMap {
+  const map: HolidayMap = {};
+  const easter = easterSunday(year);
+  addHoliday(map, new Date(year, 0, 1), "Neijoerschdag", "New Year's Day", "LU");
+  addHoliday(map, addDays(easter, 1), "Ouschterméindeg", "Easter Monday", "LU");
+  addHoliday(map, new Date(year, 4, 1), "Dag vun der Aarbecht", "Labour Day", "LU");
+  addHoliday(map, new Date(year, 4, 9), "Europadag", "Europe Day", "LU");
+  addHoliday(map, addDays(easter, 39), "Christi Himmelfaart", "Ascension Day", "LU");
+  addHoliday(map, addDays(easter, 50), "Péngschtméindeg", "Whit Monday", "LU");
+  addHoliday(map, new Date(year, 5, 23), "Nationalfeierdag", "National Day", "LU");
+  addHoliday(map, new Date(year, 7, 15), "Léiffrawëschdag", "Assumption", "LU");
+  addHoliday(map, new Date(year, 10, 1), "Allerhellgen", "All Saints' Day", "LU");
+  addHoliday(map, new Date(year, 11, 25), "Chrëschtdag", "Christmas", "LU");
+  addHoliday(map, new Date(year, 11, 26), "Stiefesdag", "St Stephen's Day", "LU");
+  return map;
+}
+
+export function makeDKHolidays(year: number): HolidayMap {
+  const map: HolidayMap = {};
+  const easter = easterSunday(year);
+  addHoliday(map, new Date(year, 0, 1), "Nytårsdag", "New Year's Day", "DK");
+  addHoliday(map, addDays(easter, -3), "Skærtorsdag", "Maundy Thursday", "DK");
+  addHoliday(map, addDays(easter, -2), "Langfredag", "Good Friday", "DK");
+  addHoliday(map, addDays(easter, 0), "Påskedag", "Easter Sunday", "DK");
+  addHoliday(map, addDays(easter, 1), "Anden påskedag", "Easter Monday", "DK");
+  addHoliday(map, addDays(easter, 26), "Store bededag", "Great Prayer Day", "DK");
+  addHoliday(map, addDays(easter, 39), "Kristi himmelfartsdag", "Ascension Day", "DK");
+  addHoliday(map, addDays(easter, 49), "Pinsedag", "Whit Sunday", "DK");
+  addHoliday(map, addDays(easter, 50), "Anden pinsedag", "Whit Monday", "DK");
+  addHoliday(map, new Date(year, 11, 25), "Juledag", "Christmas Day", "DK");
+  addHoliday(map, new Date(year, 11, 26), "Anden juledag", "Boxing Day", "DK");
+  return map;
+}
+
+export function makeFIHolidays(year: number): HolidayMap {
+  const map: HolidayMap = {};
+  const easter = easterSunday(year);
+  addHoliday(map, new Date(year, 0, 1), "Uudenvuodenpäivä", "New Year's Day", "FI");
+  addHoliday(map, new Date(year, 0, 6), "Loppiainen", "Epiphany", "FI");
+  addHoliday(map, addDays(easter, -2), "Pitkäperjantai", "Good Friday", "FI");
+  addHoliday(map, addDays(easter, 0), "Pääsiäispäivä", "Easter Sunday", "FI");
+  addHoliday(map, addDays(easter, 1), "Toinen pääsiäispäivä", "Easter Monday", "FI");
+  addHoliday(map, new Date(year, 4, 1), "Vappu", "May Day", "FI");
+  addHoliday(map, addDays(easter, 39), "Helatorstai", "Ascension Day", "FI");
+  const midsummerEve = nthWeekdayOfMonth(year, 5, 5, -1);
+  addHoliday(map, addDays(midsummerEve, 1), "Juhannuspäivä", "Midsummer Day", "FI");
+  addHoliday(map, nthWeekdayOfMonth(year, 10, 6, 1), "Pyhäinpäivä", "All Saints' Day", "FI");
+  addHoliday(map, new Date(year, 11, 6), "Itsenäisyyspäivä", "Independence Day", "FI");
+  addHoliday(map, new Date(year, 11, 25), "Joulupäivä", "Christmas Day", "FI");
+  addHoliday(map, new Date(year, 11, 26), "Tapaninpäivä", "Boxing Day", "FI");
+  return map;
+}
+
+export function makeHUHolidays(year: number): HolidayMap {
+  const map: HolidayMap = {};
+  const easter = easterSunday(year);
+  addHoliday(map, new Date(year, 0, 1), "Újév", "New Year's Day", "HU");
+  addHoliday(map, new Date(year, 2, 15), "Nemzeti ünnep", "National Day", "HU");
+  addHoliday(map, addDays(easter, -2), "Nagypéntek", "Good Friday", "HU");
+  addHoliday(map, addDays(easter, 0), "Húsvétvasárnap", "Easter Sunday", "HU");
+  addHoliday(map, addDays(easter, 1), "Húsvéthétfő", "Easter Monday", "HU");
+  addHoliday(map, new Date(year, 4, 1), "A munka ünnepe", "Labour Day", "HU");
+  addHoliday(map, addDays(easter, 49), "Pünkösdvasárnap", "Whit Sunday", "HU");
+  addHoliday(map, addDays(easter, 50), "Pünkösdhétfő", "Whit Monday", "HU");
+  addHoliday(map, new Date(year, 7, 20), "Államalapítás ünnepe", "State Foundation Day", "HU");
+  addHoliday(map, new Date(year, 9, 23), "Nemzeti ünnep", "Republic Day", "HU");
+  addHoliday(map, new Date(year, 10, 1), "Mindenszentek", "All Saints' Day", "HU");
+  addHoliday(map, new Date(year, 11, 25), "Karácsony", "Christmas Day", "HU");
+  addHoliday(map, new Date(year, 11, 26), "Karácsony másnapja", "Boxing Day", "HU");
+  return map;
+}
+
+export function makeEEHolidays(year: number): HolidayMap {
+  const map: HolidayMap = {};
+  const easter = easterSunday(year);
+  addHoliday(map, new Date(year, 0, 1), "Uusaasta", "New Year's Day", "EE");
+  addHoliday(map, new Date(year, 1, 24), "Iseseisvuspäev", "Independence Day", "EE");
+  addHoliday(map, addDays(easter, -2), "Suur reede", "Good Friday", "EE");
+  addHoliday(map, addDays(easter, 0), "Ülestõusmispühade 1. püha", "Easter Sunday", "EE");
+  addHoliday(map, new Date(year, 4, 1), "Kevadpüha", "Spring Day", "EE");
+  addHoliday(map, addDays(easter, 49), "Nelipühade 1. püha", "Whit Sunday", "EE");
+  addHoliday(map, new Date(year, 5, 23), "Võidupüha", "Victory Day", "EE");
+  addHoliday(map, new Date(year, 5, 24), "Jaanipäev", "Midsummer Day", "EE");
+  addHoliday(map, new Date(year, 7, 20), "Taasiseseisvumispäev", "Restoration of Independence", "EE");
+  addHoliday(map, new Date(year, 11, 25), "Jõulud", "Christmas Day", "EE");
+  addHoliday(map, new Date(year, 11, 26), "Teine jõulupüha", "Boxing Day", "EE");
+  return map;
+}
+
+export function makeISHolidays(year: number): HolidayMap {
+  const map: HolidayMap = {};
+  const easter = easterSunday(year);
+  addHoliday(map, new Date(year, 0, 1), "Nýársdagur", "New Year's Day", "IS");
+  addHoliday(map, addDays(easter, -3), "Skírðardagur", "Maundy Thursday", "IS");
+  addHoliday(map, addDays(easter, -2), "Föstudagurinn langi", "Good Friday", "IS");
+  addHoliday(map, addDays(easter, 0), "Páskadagur", "Easter Sunday", "IS");
+  addHoliday(map, addDays(easter, 1), "Annar í páskum", "Easter Monday", "IS");
+  const firstSummerDay = nthWeekdayOfMonth(year, 3, 4, 1);
+  addHoliday(map, firstSummerDay, "Sumardagurinn fyrsti", "First Day of Summer", "IS");
+  addHoliday(map, new Date(year, 4, 1), "Verkalýðsdagurinn", "Labour Day", "IS");
+  addHoliday(map, addDays(easter, 39), "Uppstigningardagur", "Ascension Day", "IS");
+  addHoliday(map, addDays(easter, 49), "Hvítasunnudagur", "Whit Sunday", "IS");
+  addHoliday(map, addDays(easter, 50), "Annar í hvítasunnu", "Whit Monday", "IS");
+  addHoliday(map, new Date(year, 5, 17), "Þjóðhátíðardagurinn", "National Day", "IS");
+  addHoliday(map, new Date(year, 11, 25), "Jóladagur", "Christmas Day", "IS");
+  addHoliday(map, new Date(year, 11, 26), "Annar í jólum", "Boxing Day", "IS");
+  return map;
+}
+
+export function makeSEHolidays(year: number): HolidayMap {
+  const map: HolidayMap = {};
+  const easter = easterSunday(year);
+  addHoliday(map, new Date(year, 0, 1), "Nyårsdagen", "New Year's Day", "SE");
+  addHoliday(map, new Date(year, 0, 6), "Trettondedag jul", "Epiphany", "SE");
+  addHoliday(map, addDays(easter, -2), "Långfredagen", "Good Friday", "SE");
+  addHoliday(map, addDays(easter, 0), "Påskdagen", "Easter Sunday", "SE");
+  addHoliday(map, addDays(easter, 1), "Annandag påsk", "Easter Monday", "SE");
+  addHoliday(map, new Date(year, 4, 1), "Första maj", "Labour Day", "SE");
+  addHoliday(map, addDays(easter, 39), "Kristi himmelsfärdsdag", "Ascension Day", "SE");
+  addHoliday(map, new Date(year, 5, 6), "Nationaldagen", "National Day", "SE");
+  const midsummerEve = nthWeekdayOfMonth(year, 5, 5, -1);
+  addHoliday(map, addDays(midsummerEve, 1), "Midsommardagen", "Midsummer Day", "SE");
+  addHoliday(map, nthWeekdayOfMonth(year, 10, 6, 1), "Alla helgons dag", "All Saints' Day", "SE");
+  addHoliday(map, new Date(year, 11, 25), "Juldagen", "Christmas Day", "SE");
+  addHoliday(map, new Date(year, 11, 26), "Annandag jul", "Boxing Day", "SE");
+  return map;
+}
+
+export function makeNGHolidays(year: number): HolidayMap {
+  const map: HolidayMap = {};
+  const easter = easterSunday(year);
+  addHoliday(map, new Date(year, 0, 1), "New Year's Day", "New Year's Day", "NG");
+  addHoliday(map, addDays(easter, -2), "Good Friday", "Good Friday", "NG");
+  addHoliday(map, addDays(easter, 1), "Easter Monday", "Easter Monday", "NG");
+  addHoliday(map, new Date(year, 4, 1), "Workers' Day", "Workers' Day", "NG");
+  addHoliday(map, new Date(year, 4, 29), "Democracy Day", "Democracy Day", "NG");
+  addHoliday(map, new Date(year, 9, 1), "Independence Day", "Independence Day", "NG");
+  addHoliday(map, new Date(year, 11, 25), "Christmas Day", "Christmas Day", "NG");
+  addHoliday(map, new Date(year, 11, 26), "Boxing Day", "Boxing Day", "NG");
+  return map;
+}
+
+export function makeBDHolidays(year: number): HolidayMap {
+  const map: HolidayMap = {};
+  addHoliday(map, new Date(year, 1, 21), "শহীদ দিবস", "International Mother Language Day", "BD");
+  addHoliday(map, new Date(year, 2, 17), "জাতির পিতার জন্মদিন", "Sheikh Mujibur Rahman's Birthday", "BD");
+  addHoliday(map, new Date(year, 2, 26), "স্বাধীনতা দিবস", "Independence Day", "BD");
+  addHoliday(map, new Date(year, 3, 14), "পহেলা বৈশাখ", "Bengali New Year", "BD");
+  addHoliday(map, new Date(year, 4, 1), "মে দিবস", "May Day", "BD");
+  addHoliday(map, new Date(year, 7, 15), "জাতীয় শোক দিবস", "National Mourning Day", "BD");
+  addHoliday(map, new Date(year, 11, 16), "বিজয় দিবস", "Victory Day", "BD");
+  addHoliday(map, new Date(year, 11, 25), "বড়দিন", "Christmas", "BD");
+  return map;
+}
+
+export function makeETHolidays(year: number): HolidayMap {
+  const map: HolidayMap = {};
+  const easter = easterSunday(year);
+  const orthodoxEaster = addDays(easter, 7);
+
+  addHoliday(map, new Date(year, 0, 7), "ገና", "Orthodox Christmas", "ET");
+  addHoliday(map, new Date(year, 0, 19), "ጥምቀት", "Epiphany", "ET");
+  addHoliday(map, new Date(year, 2, 2), "አድዋ ድል", "Victory of Adwa", "ET");
+  addHoliday(map, addDays(orthodoxEaster, -2), "ስቅለት", "Good Friday", "ET");
+  addHoliday(map, addDays(orthodoxEaster, 0), "ፋሲካ", "Easter Sunday", "ET");
+  addHoliday(map, new Date(year, 4, 1), "የሰራተኞች ቀን", "Labour Day", "ET");
+  addHoliday(map, new Date(year, 4, 5), "የአርበኞች ቀን", "Patriots' Victory Day", "ET");
+  addHoliday(map, new Date(year, 4, 28), "ደርግ የወደቀበት ቀን", "Derg Downfall Day", "ET");
+  addHoliday(map, new Date(year, 8, 11), "እንቁጣጣሽ", "Ethiopian New Year", "ET");
+  addHoliday(map, new Date(year, 8, 27), "መስቀል", "Meskel", "ET");
+  return map;
+}
+
+export function makeKEHolidays(year: number): HolidayMap {
+  const map: HolidayMap = {};
+  const easter = easterSunday(year);
+  addHoliday(map, new Date(year, 0, 1), "New Year's Day", "New Year's Day", "KE");
+  addHoliday(map, addDays(easter, -2), "Good Friday", "Good Friday", "KE");
+  addHoliday(map, addDays(easter, 1), "Easter Monday", "Easter Monday", "KE");
+  addHoliday(map, new Date(year, 4, 1), "Labour Day", "Labour Day", "KE");
+  addHoliday(map, new Date(year, 5, 1), "Madaraka Day", "Madaraka Day", "KE");
+  addHoliday(map, new Date(year, 9, 10), "Huduma Day", "Huduma Day", "KE");
+  addHoliday(map, new Date(year, 9, 20), "Mashujaa Day", "Heroes' Day", "KE");
+  addHoliday(map, new Date(year, 11, 12), "Jamhuri Day", "Independence Day", "KE");
+  addHoliday(map, new Date(year, 11, 25), "Christmas Day", "Christmas Day", "KE");
+  addHoliday(map, new Date(year, 11, 26), "Boxing Day", "Boxing Day", "KE");
+  return map;
+}
+
+export function makeTRHolidays(year: number): HolidayMap {
+  const map: HolidayMap = {};
+  addHoliday(map, new Date(year, 0, 1), "Yılbaşı", "New Year's Day", "TR");
+  addHoliday(map, new Date(year, 3, 23), "Ulusal Egemenlik ve Çocuk Bayramı", "National Sovereignty and Children's Day", "TR");
+  addHoliday(map, new Date(year, 4, 1), "Emek ve Dayanışma Günü", "Labour and Solidarity Day", "TR");
+  addHoliday(map, new Date(year, 4, 19), "Atatürk'ü Anma, Gençlik ve Spor Bayramı", "Commemoration of Atatürk, Youth and Sports Day", "TR");
+  addHoliday(map, new Date(year, 6, 15), "Demokrasi ve Millî Birlik Günü", "Democracy and National Unity Day", "TR");
+  addHoliday(map, new Date(year, 7, 30), "Zafer Bayramı", "Victory Day", "TR");
+  addHoliday(map, new Date(year, 9, 29), "Cumhuriyet Bayramı", "Republic Day", "TR");
+  return map;
+}
+
 export const holidayCalculators = {
   US: makeUSHolidays,
   UK: makeUKHolidays,
@@ -557,4 +815,9 @@ export const holidayCalculators = {
   VN: makeVNHolidays,
   BH: makeBHHolidays,
   MY: makeMYHolidays,
+  NG: makeNGHolidays,
+  BD: makeBDHolidays,
+  ET: makeETHolidays,
+  KE: makeKEHolidays,
+  TR: makeTRHolidays,
 };
