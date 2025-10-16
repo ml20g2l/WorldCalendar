@@ -65,16 +65,16 @@ The calendar now supports **44 countries** across all continents:
 | Asia | Vietnam | `VN` | Reunification Day and National Day. |
 | Asia | Bahrain | `BH` | National Day. |
 | Asia | Malaysia | `MY` | Malaysia Day and Federal Territory Day. |
+| Asia | Bangladesh | `BD` | International Mother Language Day and Victory Day. |
 | **Africa** | Nigeria | `NG` | Democracy Day and Independence Day. |
 | Africa | Ethiopia | `ET` | Orthodox Christmas and Ethiopian New Year. |
 | Africa | Kenya | `KE` | Madaraka Day and Mashujaa Day. |
 | **Middle East** | Turkey | `TR` | Republic Day and Democracy and National Unity Day. |
-| **South Asia** | Bangladesh | `BD` | International Mother Language Day and Victory Day. |
-| **Americas** | United States | `US` | Federal holidays including Thanksgiving. |
-| Americas | Canada | `CA` | Federal and provincial holidays. |
-| Americas | Brazil | `BR` | Carnival and regional celebrations. |
-| Americas | Argentina | `AR` | May Revolution and Independence Day. |
-| Americas | Mexico | `MX` | Constitution Day and Revolution Day. |
+| **America** | United States | `US` | Federal holidays including Thanksgiving. |
+| America | Canada | `CA` | Federal and provincial holidays. |
+| America | Brazil | `BR` | Carnival and regional celebrations. |
+| America | Argentina | `AR` | May Revolution and Independence Day. |
+| America | Mexico | `MX` | Constitution Day and Revolution Day. |
 | **Oceania** | Australia | `AU` | State‑specific holidays (NSW, VIC, etc.). |
 | Oceania | New Zealand | `NZ` | National and regional anniversary days. |
 
